@@ -13,6 +13,9 @@ services:
       context: .
       dockerfile: Dockerfile.test
 
+    depends_on:
+      - mocks
+
     environment:
       APP_ENV: test
       IS_TEST: 'true'

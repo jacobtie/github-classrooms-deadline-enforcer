@@ -46,8 +46,8 @@ func main() {
 		w.WriteHeader(http.StatusOK)
 		w.Write(b)
 	})
-	log.Default().Println("Starting on port 3000")
 	http.HandleFunc("/github/", handleGitHub)
+	log.Default().Println("Starting on port 3000")
 	http.ListenAndServe(":3000", nil)
 }
 
@@ -100,7 +100,7 @@ func handleGetContents(w http.ResponseWriter, r *http.Request, repoName, fileNam
 		w.Write([]byte("Bad Request"))
 		return
 	}
-	w.Header().Add("Accept", "application/vnd.github.raw")
+	w.Header().Add("Content-Type", "application/vnd.github.raw")
 	w.WriteHeader(http.StatusOK)
 	w.Write(testConfig)
 }

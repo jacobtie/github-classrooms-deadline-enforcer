@@ -21,7 +21,7 @@ type Config struct {
 	GitHub   struct {
 		BaseURL        string        `envconfig:"GITHUB_BASE_URL" default:"http://localhost:3000/github"`
 		AuthToken      string        `envconfig:"GITHUB_AUTH_TOKEN" default:"test-token"`
-		Timeout        time.Duration `envconfig:"GITHUB_CONFIG" default:"500ms"`
+		Timeout        time.Duration `envconfig:"GITHUB_TIMEOUT" default:"500ms"`
 		OrgName        string        `envconfig:"GITHUB_ORG_NAME" default:"test-org"`
 		ConfigRepoName string        `envconfig:"GITHUB_CONFIG_REPO_NAME" default:"test-config-repo"`
 	}

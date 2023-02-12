@@ -11,8 +11,7 @@ import (
 )
 
 type repoState struct {
-	PutUsername    string `json:"putUsername"`
-	DeleteUsername string `json:"deleteUsername"`
+	PutUsername string `json:"putUsername"`
 }
 
 var repoStates map[string]*repoState
@@ -80,10 +79,6 @@ func handleGitHub(w http.ResponseWriter, r *http.Request) {
 		handlePutCollaborator(w, r, repoName, param)
 		return
 	}
-	if route == "collaborators" && r.Method == http.MethodDelete {
-		handleDeleteCollaborator(w, r, repoName, param)
-		return
-	}
 	w.WriteHeader(http.StatusNotFound)
 	w.Write([]byte("Not Found"))
 }
@@ -125,18 +120,6 @@ func handlePutCollaborator(w http.ResponseWriter, r *http.Request, repoName, use
 	}
 	repoStates[repoName].PutUsername = username
 	w.WriteHeader(http.StatusCreated)
-	// Not a typical response from GitHub but we do not read the response
-	w.Write([]byte("Done"))
-}
-
-func handleDeleteCollaborator(w http.ResponseWriter, r *http.Request, repoName, username string) {
-	if _, ok := repoStates[repoName]; !ok {
-		w.WriteHeader(http.StatusNotFound)
-		w.Write([]byte("Not Found"))
-		return
-	}
-	repoStates[repoName].DeleteUsername = username
-	w.WriteHeader(http.StatusNoContent)
 	// Not a typical response from GitHub but we do not read the response
 	w.Write([]byte("Done"))
 }

@@ -14,8 +14,7 @@ import (
 )
 
 type repoState struct {
-	PutUsername    string `json:"putUsername"`
-	DeleteUsername string `json:"deleteUsername"`
+	PutUsername string `json:"putUsername"`
 }
 
 func runTest(t *testing.T, date string) map[string]*repoState {
@@ -76,24 +75,19 @@ func TestAssignmentWithoutExtensions(t *testing.T) {
 	states := runTest(t, "2023-02-11")
 	assert.Equal(t, map[string]*repoState{
 		"test-assignment-1-number-four": {
-			PutUsername:    "number-four",
-			DeleteUsername: "number-four",
+			PutUsername: "number-four",
 		},
 		"test-assignment-1-number-six": {
-			PutUsername:    "number-six",
-			DeleteUsername: "number-six",
+			PutUsername: "number-six",
 		},
 		"test-assignment-1-number-ten": {
-			PutUsername:    "number-ten",
-			DeleteUsername: "number-ten",
+			PutUsername: "number-ten",
 		},
 		"test-assignment-1-number-twelve": {
-			PutUsername:    "number-twelve",
-			DeleteUsername: "number-twelve",
+			PutUsername: "number-twelve",
 		},
 		"test-assignment-1-number-thirteen": {
-			PutUsername:    "number-thirteen",
-			DeleteUsername: "number-thirteen",
+			PutUsername: "number-thirteen",
 		},
 		"test-assignment-2-number-four":     {},
 		"test-assignment-2-number-six":      {},
@@ -125,14 +119,12 @@ func TestAssignmentWithExtensions(t *testing.T) {
 		"test-assignment-1-number-thirteen": {},
 		"test-assignment-2-number-four":     {},
 		"test-assignment-2-number-six": {
-			PutUsername:    "number-six",
-			DeleteUsername: "number-six",
+			PutUsername: "number-six",
 		},
 		"test-assignment-2-number-ten":    {},
 		"test-assignment-2-number-twelve": {},
 		"test-assignment-2-number-thirteen": {
-			PutUsername:    "number-thirteen",
-			DeleteUsername: "number-thirteen",
+			PutUsername: "number-thirteen",
 		},
 		"test-assignment-3-number-four":     {},
 		"test-assignment-3-number-six":      {},
@@ -160,30 +152,24 @@ func TestAssignmentAndOtherExtensions(t *testing.T) {
 		"test-assignment-2-number-four":     {},
 		"test-assignment-2-number-six":      {},
 		"test-assignment-2-number-ten": {
-			PutUsername:    "number-ten",
-			DeleteUsername: "number-ten",
+			PutUsername: "number-ten",
 		},
 		"test-assignment-2-number-twelve":   {},
 		"test-assignment-2-number-thirteen": {},
 		"test-assignment-3-number-four": {
-			PutUsername:    "number-four",
-			DeleteUsername: "number-four",
+			PutUsername: "number-four",
 		},
 		"test-assignment-3-number-six": {
-			PutUsername:    "number-six",
-			DeleteUsername: "number-six",
+			PutUsername: "number-six",
 		},
 		"test-assignment-3-number-ten": {
-			PutUsername:    "number-ten",
-			DeleteUsername: "number-ten",
+			PutUsername: "number-ten",
 		},
 		"test-assignment-3-number-twelve": {
-			PutUsername:    "number-twelve",
-			DeleteUsername: "number-twelve",
+			PutUsername: "number-twelve",
 		},
 		"test-assignment-3-number-thirteen": {
-			PutUsername:    "number-thirteen",
-			DeleteUsername: "number-thirteen",
+			PutUsername: "number-thirteen",
 		},
 		"test-assignment-4-number-four":     {},
 		"test-assignment-4-number-six":      {},
@@ -204,8 +190,7 @@ func TestNoAssigmentAndOtherExceptions(t *testing.T) {
 		"test-assignment-1-number-twelve":   {},
 		"test-assignment-1-number-thirteen": {},
 		"test-assignment-2-number-four": {
-			PutUsername:    "number-four",
-			DeleteUsername: "number-four",
+			PutUsername: "number-four",
 		},
 		"test-assignment-2-number-six":      {},
 		"test-assignment-2-number-ten":      {},
@@ -238,8 +223,7 @@ func TestAssignmentWithExtensionsAndOtherExtensions(t *testing.T) {
 		"test-assignment-2-number-six":      {},
 		"test-assignment-2-number-ten":      {},
 		"test-assignment-2-number-twelve": {
-			PutUsername:    "number-twelve",
-			DeleteUsername: "number-twelve",
+			PutUsername: "number-twelve",
 		},
 		"test-assignment-2-number-thirteen": {},
 		"test-assignment-3-number-four":     {},
@@ -249,20 +233,16 @@ func TestAssignmentWithExtensionsAndOtherExtensions(t *testing.T) {
 		"test-assignment-3-number-thirteen": {},
 		"test-assignment-4-number-four":     {},
 		"test-assignment-4-number-six": {
-			PutUsername:    "number-six",
-			DeleteUsername: "number-six",
+			PutUsername: "number-six",
 		},
 		"test-assignment-4-number-ten": {
-			PutUsername:    "number-ten",
-			DeleteUsername: "number-ten",
+			PutUsername: "number-ten",
 		},
 		"test-assignment-4-number-twelve": {
-			PutUsername:    "number-twelve",
-			DeleteUsername: "number-twelve",
+			PutUsername: "number-twelve",
 		},
 		"test-assignment-4-number-thirteen": {
-			PutUsername:    "number-thirteen",
-			DeleteUsername: "number-thirteen",
+			PutUsername: "number-thirteen",
 		},
 	}, states)
 }

@@ -19,7 +19,7 @@ type repoState struct {
 }
 
 func runTest(t *testing.T, date string) map[string]*repoState {
-	cfg := config.Get()
+	cfg := config.Init()
 	cfg.Test.TEST_DATE = date
 	http.Get(fmt.Sprintf("%s/reset", cfg.GitHub.BaseURL))
 	if err := enforce.Run(context.Background(), cfg); err != nil {

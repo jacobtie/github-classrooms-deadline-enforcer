@@ -31,7 +31,7 @@ type Config struct {
 	}
 }
 
-func Get() *Config {
+func Init() *Config {
 	var c Config
 	if err := envconfig.Process("", &c); err != nil {
 		log.Fatal().Err(err).Msg("failed to parse env config")

@@ -20,7 +20,7 @@ var repoStates map[string]*repoState
 //go:embed config.json
 var testConfig []byte
 
-var re = regexp.MustCompile("^/repos/([^/]+)/([^/]+)/([^/]+)/([^/]+)$")
+var pathRE = regexp.MustCompile("^/repos/([^/]+)/([^/]+)/([^/]+)/([^/]+)$")
 
 const TEST_ORG_NAME = "test-org"
 const TEST_CONFIG_REPO_NAME = "test-config-repo"
@@ -40,6 +40,7 @@ func main() {
 		if err != nil {
 			w.WriteHeader(http.StatusInternalServerError)
 			w.Write([]byte(err.Error()))
+			return
 		}
 		w.Header().Add("Content-Type", "application/json")
 		w.WriteHeader(http.StatusOK)
@@ -56,7 +57,7 @@ func handleGitHub(w http.ResponseWriter, r *http.Request) {
 		w.Write([]byte("Not Found"))
 	}
 	subPath := strings.Split(r.URL.Path, "/github")[1]
-	pathSegments := re.FindStringSubmatch(subPath)
+	pathSegments := pathRE.FindStringSubmatch(subPath)
 	if len(pathSegments) != 5 {
 		w.WriteHeader(http.StatusNotFound)
 		w.Write([]byte("Not Found"))

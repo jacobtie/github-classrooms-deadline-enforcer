@@ -3,9 +3,11 @@ build:
 	zip main.zip main
 	rm main
 
-
 services:
 	go run mock-service-api/main.go
+
+run-local:
+	go run cmd/main.go
 
 test:
 	IS_TEST=true go test ./...

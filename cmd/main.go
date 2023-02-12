@@ -20,14 +20,14 @@ func main() {
 			log.Fatal().Err(err).Msg("failed to load .env file locally")
 		}
 	}
-	cfg := config.Get()
+	cfg := config.Init()
 	zerolog.SetGlobalLevel(cfg.LogLevel)
 	if cfg.AppEnv != config.PRODUCTION {
-		log.Debug().Msg("Starting local run")
+		log.Debug().Msg("starting local run")
 		if err := enforce.Run(context.Background(), cfg); err != nil {
 			log.Fatal().Err(err).Msg("failed to run locally")
 		}
-		log.Debug().Msg("Successfully finished running locally")
+		log.Debug().Msg("successfully finished running locally")
 		return
 	}
 	lambda.Start(func(ctx context.Context) error {

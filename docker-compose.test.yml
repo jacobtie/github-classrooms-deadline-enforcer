@@ -1,0 +1,20 @@
+services:
+
+  mocks:
+    build:
+      context: .
+      dockerfile: Dockerfile.mocks
+
+    expose:
+      - 3000
+
+  test:
+    build:
+      context: .
+      dockerfile: Dockerfile.test
+
+    environment:
+      APP_ENV: test
+      IS_TEST: 'true'
+      LOG_LEVEL: error
+      GITHUB_BASE_URL: http://mocks:3000/github

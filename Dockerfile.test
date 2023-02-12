@@ -1,0 +1,12 @@
+FROM golang:1.19.5-buster
+
+RUN mkdir /app
+WORKDIR /app
+
+COPY go.mod .
+COPY go.sum .
+COPY cmd/ ./cmd
+COPY internal/ ./internal
+COPY vendor/ ./vendor
+
+CMD ["go", "test", "./..."]

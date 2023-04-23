@@ -3,6 +3,8 @@ package enforce
 import (
 	"context"
 	"fmt"
+	"math/rand"
+	"time"
 
 	"github.com/jacobtie/github-classrooms-deadline-enforcer/internal/config"
 	"github.com/jacobtie/github-classrooms-deadline-enforcer/internal/github"
@@ -29,6 +31,14 @@ func Run(ctx context.Context, cfg *config.Config) error {
 			errMsg := fmt.Sprintf("ERROR: failed to update user permissions to read for %s in repo %s: %s", enforcement.username, enforcement.repoName, err.Error())
 			log.Error().Err(err).Msg(errMsg)
 		}
+		delay()
 	}
 	return nil
+}
+
+func delay() {
+	// Create some randomness with our sleep
+	jitterMS := rand.Intn(250) + 1
+	sleepAmount := time.Duration(jitterMS+250) + 250
+	time.Sleep(sleepAmount)
 }
